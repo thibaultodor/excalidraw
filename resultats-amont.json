@@ -1,0 +1,24 @@
+{
+  "measured_at": "2026-09-10T14:32:06+00:00",
+  "repo": "excalidraw/excalidraw",
+  "environment": "Production \u2013 excalidraw",
+  "window_days": 90,
+  "since": "2026-06-12",
+  "incident_label": "bug",
+  "rework_prefix": null,
+  "deployment_count": 14,
+  "deployment_frequency_per_day": 0.15555555555555556,
+  "median_interval_hours": 118.24138888888889,
+  "change_lead_time_p50_hours": 43.83611111111111,
+  "change_lead_time_p90_hours": 214.755,
+  "commits_analysed": 75,
+  "batches_analysed": 13,
+  "batches_skipped": 0,
+  "change_fail_rate": null,
+  "failed_deployment_recovery_time_p50_hours": null,
+  "deployment_rework_rate": null,
+  "incidents_found": 0,
+  "incidents_linked": 0
+}
+
+

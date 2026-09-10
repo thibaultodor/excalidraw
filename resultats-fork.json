@@ -1,0 +1,24 @@
+{
+  "measured_at": "2026-09-10T14:59:04.383648+00:00",
+  "repo": "thibaultodor/excalidraw",
+  "environment": "production",
+  "window_days": 90,
+  "since": "2026-06-12",
+  "incident_label": "incident",
+  "rework_prefix": "hotfix/",
+  "deployment_count": 5,
+  "deployment_frequency_per_day": 0.05555555555555555,
+  "median_interval_hours": 0.01138888888888889,
+  "change_lead_time_p50_hours": 0.0030555555555555557,
+  "change_lead_time_p90_hours": 0.0033333333333333335,
+  "commits_analysed": 5,
+  "batches_analysed": 4,
+  "batches_skipped": 0,
+  "change_fail_rate": 0.2,
+  "failed_deployment_recovery_time_p50_hours": 0.03888888888888889,
+  "deployment_rework_rate": 0.2,
+  "incidents_found": 1,
+  "incidents_linked": 1
+}
+
+

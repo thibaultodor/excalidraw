@@ -16,7 +16,7 @@ fige_le: "2026-09-10T16:18:55+02:00"
 
 deploiement:
   compte_comme_deploiement: "premier Deployment Status 'success' sur l'environnement exact 'Production \u2013 excalidraw'"
-  exclut: ["environnements Preview", "environnements Production ou Preview des exemples d'integration", "deploiements sans statut success"]
+  exclut: ["environnements Preview", "autres applications et exemples d'integration", "deploiements sans statut success"]
   horodatage: "fin du deploiement (created_at du premier statut success)"
 
 changement:
@@ -30,7 +30,7 @@ incident:
   rattachement_deploiement: "champ explicite 'caused_by: <deployment_id>' renseigne dans le corps de l'incident"
 
 rework:
-  marqueur: "branche hotfix/*"
+  marqueur: "branche hotfix/*, conservee dans payload.source_ref apres fusion"
 
 fenetre_de_reference: "90 jours glissants"
 agregation: "mediane (P50) pour les durees, P90 publie en complement ; comptes et taux sur la fenetre"
@@ -345,5 +345,4 @@ cartographier leur flux ; je demanderais d'abord s'ils partagent une même
 catégorie de blocage. Enfin, ces données publiques décrivent une partie du
 système de livraison d'Excalidraw, pas la productivité ni la santé des
 personnes qui le maintiennent.
-
 

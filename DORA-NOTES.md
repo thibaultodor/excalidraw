@@ -5,3 +5,4 @@ Le workflow mesure la chaîne de livraison, pas l'application Excalidraw.
 
 - Initialisation de l'instrumentation : 10 septembre 2026.
 - Déploiement d'observation 2 : vérification du débit.
+- Déploiement d'observation 3 : vérification du lead time.

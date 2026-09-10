@@ -7,3 +7,4 @@ Le workflow mesure la chaîne de livraison, pas l'application Excalidraw.
 - Déploiement d'observation 2 : vérification du débit.
 - Déploiement d'observation 3 : vérification du lead time.
 - Déploiement d'observation 4 : vérification de la cadence.
+- Correctif urgent : exercice de retravail non planifié.

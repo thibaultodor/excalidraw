@@ -1,0 +1,28 @@
+application: excalidraw
+fige_le: "2026-09-10T16:18:55+02:00"
+
+deploiement:
+  compte_comme_deploiement: "premier Deployment Status 'success' sur l'environnement exact 'Production \u2013 excalidraw'"
+  exclut: ["environnements Preview", "autres applications et exemples d'integration", "deploiements sans statut success"]
+  horodatage: "fin du deploiement (created_at du premier statut success)"
+
+changement:
+  point_de_depart: "committer date du commit sur la branche par defaut"
+
+incident:
+  definition: "degradation en production necessitant une intervention immediate ; une issue 'bug' n'est qu'un proxy exploratoire"
+  source: "incident reel : systeme d'alerte ou issue dediee ; proxy du TD : issue GitHub avec le label 'bug'"
+  debut: "horodatage de la detection ; created_at de l'issue uniquement pour le proxy"
+  fin: "service retabli ; closed_at de l'issue uniquement pour le proxy"
+  rattachement_deploiement: "champ explicite 'caused_by: <deployment_id>' renseigne dans le corps de l'incident"
+
+rework:
+  marqueur: "branche hotfix/*, conservee dans payload.source_ref apres fusion"
+
+fenetre_de_reference: "90 jours glissants"
+agregation: "mediane (P50) pour les durees, P90 publie en complement ; comptes et taux sur la fenetre"
+
+revision_envisagee: |
+  2026-09-10 : remplacer le label generique 'bug' par un label 'incident'
+  obligatoire, avec les vrais horodatages de detection et de retablissement.
+  Conserver les definitions figees ci-dessus pour la serie historique.

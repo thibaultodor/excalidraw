@@ -1,0 +1,66 @@
+name: deploy-production
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+  deployments: write
+  pull-requests: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Créer l'évènement de déploiement
+        id: deployment
+        uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v9
+        with:
+          script: |
+            const { data: pulls } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+            });
+            const mergedPull = pulls.find(
+              (pull) => pull.merged_at && pull.merge_commit_sha === context.sha,
+            );
+            const mergeMessage = context.payload.head_commit?.message ?? '';
+            const hotfixFromMessage = mergeMessage.match(/\bhotfix\/[\w./-]+/)?.[0];
+            const hotfixFromConventionalCommit = /^hotfix:/i.test(mergeMessage)
+              ? 'hotfix/conventional-commit'
+              : undefined;
+            const sourceRef = mergedPull?.head.ref
+              ?? hotfixFromMessage
+              ?? hotfixFromConventionalCommit
+              ?? context.ref.replace('refs/heads/', '');
+
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha,
+              environment: 'production',
+              required_contexts: [],
+              auto_merge: false,
+              payload: {
+                source_ref: sourceRef,
+              },
+            });
+            return deployment.data.id;
+
+      - name: Déployer
+        run: echo "déploiement"
+
+      - name: Marquer le déploiement comme réussi
+        if: success()
+        uses: actions/github-script@373c709c69115d41ff229c7e5df9f8788daa9553 # v9
+        with:
+          script: |
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: ${{ steps.deployment.outputs.result }},
+              state: 'success',
+              environment: 'production',
+            });
